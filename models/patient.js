@@ -55,3 +55,11 @@ module.exports.loginCheck=async function(username,password){
         return {login:false}
     }
 }
+
+module.exports.getAllSchedules=async function(){
+ 
+    const [results,metaData]=await Connection.connect.query(`SELECT * FROM schedules`);
+    return results;
+
+    
+}

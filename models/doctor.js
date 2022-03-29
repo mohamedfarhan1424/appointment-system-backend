@@ -61,3 +61,19 @@ module.exports.loginCheck=async function(username,password){
         return {login:false}
     }
 }
+
+
+module.exports.addSchedule=async function(scheduleDate,scheduleTime,username,name,education,speciality){
+    const [results,metaData]=await Connection.connect.query(`INSERT INTO schedules
+    (
+    doctor_name,
+    doctor_username,
+    education,
+    speciality,
+    schedule_date,
+    schedule_time)
+    VALUES
+    ('${name}','${username}','${education}','${speciality}','${scheduleDate}','${scheduleTime}')
+    `);
+    return true;
+}

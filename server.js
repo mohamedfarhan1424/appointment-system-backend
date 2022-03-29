@@ -70,6 +70,28 @@ const init=async ()=>{
                 const login=await doctors.loginCheck(username,password);
                 return login;
             }
+        },
+        {
+            method:"GET",
+            path:"/getallschedules",
+            handler:async (req,res)=>{
+                const results=await patients.getAllSchedules();
+                return results;
+            }
+        },
+        {
+            method:"POST",
+            path:'/addschedule',
+            handler:async (req,res)=>{
+                const scheduleDate=req.payload.scheduleDate;
+                const scheduleTime=req.payload.scheduleTime;
+                const username=req.payload.username;
+                const name=req.payload.name;
+                const education=req.payload.education;
+                const speciality=req.payload.speciality;
+                const result = await doctors.addSchedule(scheduleDate,scheduleTime,username,name,education,speciality)
+                return result;
+            }
         }
     ])
 
