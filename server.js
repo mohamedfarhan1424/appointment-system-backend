@@ -92,7 +92,7 @@ const init=async ()=>{
                 const result = await doctors.addSchedule(scheduleDate,scheduleTime,username,name,education,speciality)
                 return result;
             }
-        }
+        },
     ])
 
 
