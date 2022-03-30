@@ -77,3 +77,23 @@ module.exports.addSchedule=async function(scheduleDate,scheduleTime,username,nam
     `);
     return true;
 }
+
+module.exports.getDoctorSchedules=async function(username){
+    const [results,metaData]=await Connection.connect.query(`SELECT * FROM schedules WHERE doctor_username='${username}'`);
+    return results;
+}
+
+module.exports.makeSchedule=async function(patientName,reason,scheduleId){
+    const [results,metaData]=await Connection.connect.query(`UPDATE schedules SET patient_booked='${patientName}', patient_reason='${reason}' WHERE schedule_id='${scheduleId}'`);
+    return true;
+}
+
+module.exports.getAppointments=async function(doctorName){
+    const [results,metaData]=await Connection.connect.query(`SELECT * FROM schedules WHERE doctor_username='${doctorName}' AND patient_booked is not null`);
+    return results;
+}
+
+module.exports.deleteSchedule=async function(scheduleId){
+    const [results,metaData]=await Connection.connect.query(`DELETE FROM schedules WHERE schedule_id='${scheduleId}'`);
+    return true;
+}

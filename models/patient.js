@@ -58,8 +58,28 @@ module.exports.loginCheck=async function(username,password){
 
 module.exports.getAllSchedules=async function(){
  
-    const [results,metaData]=await Connection.connect.query(`SELECT * FROM schedules`);
+    const [results,metaData]=await Connection.connect.query(`SELECT * FROM schedules WHERE patient_booked is null`);
     return results;
 
     
+}
+
+module.exports.getPatientSchedules=async function(patientName){
+    const [results,metaData]=await Connection.connect.query(`SELECT * FROM schedules WHERE patient_booked='${patientName}'`);
+    return results;
+}
+
+module.exports.cancelAppointment=async function(scheduleId){
+    const [results,metaData]=await Connection.connect.query(`UPDATE schedules SET patient_booked=null , patient_reason=null WHERE schedule_id='${scheduleId}'`)
+    return true;
+}
+
+module.exports.updateProfile=async function(username,name,email,phoneno){
+    const [results,metaData]=await Connection.connect.query(`UPDATE patients SET name='${name}' , email='${email}' , phoneno='${phoneno}' WHERE username='${username}'`);
+    return true;
+}
+
+module.exports.patientDetails=async function(username){
+    const [results,metaData]=await Connection.connect.query(`SELECT * FROM patients WHERE username='${username}'`);
+    return results;
 }

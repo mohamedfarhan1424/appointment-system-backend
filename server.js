@@ -93,6 +93,84 @@ const init=async ()=>{
                 return result;
             }
         },
+        {
+            method:"GET",
+            path:'/getschedule/{username}',
+            handler:async (req,res)=>{
+                const username=req.params.username;
+                const results=await doctors.getDoctorSchedules(username);
+                return results;
+            }
+        },
+        {
+            method:"PUT",
+            path:"/makeschedule",
+            handler:async (req,res)=>{
+                const patientName=req.payload.patientName;
+                const reason=req.payload.reason;
+                const scheduleId=req.payload.scheduleId;
+                const result=await doctors.makeSchedule(patientName,reason,scheduleId);
+                return result;
+            }
+        },
+        {
+            method:"GET",
+            path:"/patientschedules/{patientname}",
+            handler:async (req,res)=>{
+                const patientName=req.params.patientname;
+                const results=await patients.getPatientSchedules(patientName);
+                return results;
+            }
+        },
+        {
+            method:"GET",
+            path:"/getappointments/{doctorname}",
+            handler:async (req,res)=>{
+                const doctorName=req.params.doctorname;
+                const results=await doctors.getAppointments(doctorName);
+                return results;
+
+            }
+        },
+        {
+            method:"PUT",
+            path:"/cancelappointment",
+            handler:async (req,res)=>{
+                const scheduleId=req.payload.scheduleId;
+                const result=await patients.cancelAppointment(scheduleId);
+                return result;                
+            }
+        },
+        {
+            method:"DELETE",
+            path:"/deleteschedule/{scheduleId}",
+            handler:async (req,res)=>{
+                const scheduleId=req.params.scheduleId;
+                const result=await doctors.deleteSchedule(scheduleId);
+                return result;
+            }
+        },
+        {
+            method:"PUT",
+            path:"/updatepatient",
+            handler:async (req,res)=>{
+                const username=req.payload.username;
+                const name=req.payload.name;
+                const email=req.payload.email;
+                const phoneno=req.payload.phoneno;
+                const result=await patients.updateProfile(username,name,email,phoneno);
+                return result;
+            }
+        },
+        {
+            method:"GET",
+            path:"/patientdetails/{username}",
+            handler:async (req,res)=>{
+                const username=req.params.username;
+                const results=await patients.patientDetails(username);
+                return results;
+            }
+        }
     ])
 
 
