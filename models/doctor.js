@@ -97,3 +97,13 @@ module.exports.deleteSchedule=async function(scheduleId){
     const [results,metaData]=await Connection.connect.query(`DELETE FROM schedules WHERE schedule_id='${scheduleId}'`);
     return true;
 }
+
+module.exports.updateProfile=async function(username,name,email,phoneno,education,speciality){
+    const [results,metaData]=await Connection.connect.query(`UPDATE doctors SET name='${name}' , email='${email}' , phoneno='${phoneno}' , education='${education}' , speciality='${speciality}' WHERE username='${username}'`);
+    return true;
+}
+
+module.exports.doctorDetails=async function(username){
+    const [results,metaData]=await Connection.connect.query(`SELECT * FROM doctors WHERE username='${username}'`);
+    return results;
+}

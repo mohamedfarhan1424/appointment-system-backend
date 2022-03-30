@@ -170,7 +170,30 @@ const init=async ()=>{
                 const results=await patients.patientDetails(username);
                 return results;
             }
-        }
+        },
+        {
+            method:"PUT",
+            path:'/updatedoctor',
+            handler:async (req,res)=>{
+                const username=req.payload.username;
+                const name=req.payload.name;
+                const email=req.payload.email;
+                const phoneno=req.payload.phoneno;
+                const education=req.payload.education;
+                const speciality=req.payload.speciality;
+                const results=await doctors.updateProfile(username,name,email,phoneno,education,speciality);
+                return results;
+            }
+        },
+        {
+            method:"GET",
+            path:"/doctordetails/{username}",
+            handler:async (req,res)=>{
+                const username=req.params.username;
+                const results=await doctors.doctorDetails(username);
+                return results;
+            }
+        },
     ])
 
 
