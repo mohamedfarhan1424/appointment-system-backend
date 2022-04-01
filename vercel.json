@@ -1,10 +1,10 @@
 {
     "version":2,
-    "builds":[{"src":"./index.js","use":"@now/node-server"}],
-    "routes":[
+    "builds":[{"src":"./index.js","use":"@vercel/node"}],
+    "rewrites":[
         {
-            "src":"/(.*)",
-            "dest":"/"
+            "source":"/(.*)",
+            "destination":"/index.js"
         }
     ]
 }
