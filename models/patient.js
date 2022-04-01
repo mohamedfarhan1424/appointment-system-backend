@@ -48,6 +48,7 @@ module.exports.createPatient=async function(name,email,username,password,phoneno
 
 module.exports.loginCheck=async function(username,password){
     const [results,metaData]=await Connection.connect.query(`SELECT * FROM patients WHERE username='${username}' AND password='${password}'`);
+    console.log(results);
     if(results[0]?.username){
         return {login:true,name:results[0].name,email:results[0].email,username:results[0].username,phoneno:results[0].phoneno};
     }

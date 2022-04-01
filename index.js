@@ -6,6 +6,7 @@ const dotenv=require('dotenv');
 dotenv.config();
 const patients = require("./models/patient");
 const doctors = require("./models/doctor");
+const Connection=require('./dbconfig')
 const jwtfunctions = require("./Jwt");
 
 
@@ -357,11 +358,12 @@ const init = async () => {
     },
   ]);
 
-  await server.start();
+  Connection.connect.authenticate().then(()=>{await server.start()});
   console.log(`Server started at ${server.info.uri}`);
 };
 process.on("unhandledRejection", (err) => {
   console.log(err);
   process.exit(1);
 });
+//heroku logs -a appointment-system-back --tail
 init();
