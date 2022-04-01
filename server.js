@@ -6,10 +6,11 @@ const patients = require("./models/patient");
 const doctors = require("./models/doctor");
 const jwtfunctions = require("./Jwt");
 
+
+
 const init = async () => {
   const server = Hapi.Server({
-    host: "localhost",
-    port: 8080,
+    port:process.env.PORT||8080,
     routes: {
       cors: true,
     },
