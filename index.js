@@ -358,7 +358,7 @@ const init = async () => {
     },
   ]);
 
-  Connection.connect.authenticate().then(()=>{await server.start()});
+  Connection.connect.authenticate().then(async ()=>{await server.start()});
   console.log(`Server started at ${server.info.uri}`);
 };
 process.on("unhandledRejection", (err) => {
