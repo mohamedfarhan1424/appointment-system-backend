@@ -103,7 +103,3 @@ module.exports.updateProfile=async function(username,name,email,phoneno,educatio
     return true;
 }
 
-module.exports.doctorDetails=async function(username){
-    const [results,metaData]=await Connection.connect.query(`SELECT * FROM doctors WHERE username='${username}'`);
-    return results;
-}

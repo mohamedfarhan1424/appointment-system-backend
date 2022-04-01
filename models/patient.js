@@ -79,7 +79,3 @@ module.exports.updateProfile=async function(username,name,email,phoneno){
     return true;
 }
 
-module.exports.patientDetails=async function(username){
-    const [results,metaData]=await Connection.connect.query(`SELECT * FROM patients WHERE username='${username}'`);
-    return results;
-}

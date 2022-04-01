@@ -1,0 +1,14 @@
+POST http://localhost:8080/patientlogin
+Content-Type: application/json
+
+{
+    "username":"farhan",
+    "password":"1234"
+}
+
+###
+GET http://localhost:8080/getallschedules
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6dHJ1ZSwibmFtZSI6ImZhcmhhbiIsImVtYWlsIjoiZmFyaGFuMTQyNEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImZhcmhhbiIsInBob25lbm8iOiI0NTQ1MTI0MjM1IiwiaWF0IjoxNjQ4NzI2OTQwfQ.LYAHWFNLQDBdRsjauNSp95b28M4ze9RUYJtGsdCCx5Y
+###
+
+GET http://localhost:8080/getschedule/
