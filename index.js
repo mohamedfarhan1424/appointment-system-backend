@@ -2,6 +2,8 @@
 
 const Hapi = require("@hapi/hapi");
 const jwt = require("@hapi/jwt");
+const dotenv=require('dotenv');
+dotenv.config();
 const patients = require("./models/patient");
 const doctors = require("./models/doctor");
 const jwtfunctions = require("./Jwt");
