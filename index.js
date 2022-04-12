@@ -13,6 +13,7 @@ const jwtfunctions = require("./Jwt");
 
 const init = async () => {
   const server = Hapi.Server({
+    host:"localhost",
     port:process.env.PORT||8080,
     routes: {
       cors: true,
